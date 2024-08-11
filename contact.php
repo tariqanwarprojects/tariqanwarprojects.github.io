@@ -7,9 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars(trim($_POST["message"]));
 
     // Email settings
-    $to = "mailto:contact.tariqanwar@gmail.com";
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
+    $to = "contact.tariqanwar@gmail.com";
+    $headers = "From: $email" . "\r\n";
+    $headers .= "Reply-To: $email" . "\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     
     // Email content
