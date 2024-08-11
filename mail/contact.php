@@ -1,20 +1,31 @@
 <?php
-if(empty($_POST['name']) || empty($_POST['subject']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-  http_response_code(500);
-  exit();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect form data
+    $name = htmlspecialchars(trim($_POST["name"]));
+    $email = htmlspecialchars(trim($_POST["email"]));
+    $subject = htmlspecialchars(trim($_POST["subject"]));
+    $message = htmlspecialchars(trim($_POST["message"]));
+
+    // Email settings
+    $to = "contact.tariqanwar@gmail.com";
+    $headers = "From: $email\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    
+    // Email content
+    $email_subject = "Contact Form Submission: $subject";
+    $email_message = "Name: $name\n";
+    $email_message .= "Email: $email\n";
+    $email_message .= "Subject: $subject\n";
+    $email_message .= "Message:\n$message\n";
+    
+    // Send email
+    if (mail($to, $email_subject, $email_message, $headers)) {
+        echo "Thank you for contacting us, $name. We will get back to you soon!";
+    } else {
+        echo "Sorry, there was an error sending your message. Please try again later.";
+    }
+} else {
+    echo "Invalid request.";
 }
-
-$name = strip_tags(htmlspecialchars($_POST['name']));
-$email = strip_tags(htmlspecialchars($_POST['email']));
-$m_subject = strip_tags(htmlspecialchars($_POST['subject']));
-$message = strip_tags(htmlspecialchars($_POST['message']));
-
-$to = "contact.tariqanwar@gmail.com";
-$subject = "$m_subject:  $name";
-$body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\n\nEmail: $email\n\nSubject: $m_subject\n\nMessage: $message";
-$header = "From: $email";
-$header .= "Reply-To: $email";	
-
-if(!mail($to, $subject, $body, $header))
-  http_response_code(500);
 ?>
