@@ -481,6 +481,7 @@ a:focus {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .section-header h2 {
@@ -605,6 +606,22 @@ a:focus {
     margin-bottom: 30px;
 }
 
+.about .about-header p {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #fdbe33;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.about .about-header h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #030f27;
+    font-size: 50px;
+    font-weight: 700;
+}
+
 .about .about-img {
     position: relative;
     height: 100%;
@@ -613,6 +630,12 @@ a:focus {
 .about .about-img img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+}
+
+.about .md-img img {
+    width: 65%;
+    height: 65%;
     object-fit: cover;
 }
 
@@ -647,6 +670,20 @@ a:focus {
     }
 }
 
+/*******************************/
+/********** MD Message CSS ***********/
+/*******************************/
+.md .md-column {
+    float: left;
+}
+
+.md .md-left {
+    width: 25%;
+}
+  
+.md .md-right {
+    width: 75%;
+}
 
 /*******************************/
 /********** Fact CSS ***********/
