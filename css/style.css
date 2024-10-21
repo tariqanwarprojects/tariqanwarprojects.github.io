@@ -1878,7 +1878,7 @@ a:focus {
 .portfolio .portfolio-warp {
     position: relative;
     width: 100%;
-    text-align: center;
+    text-align: justify;
     margin-bottom: 30px;
 }
 
